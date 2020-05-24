@@ -22,5 +22,4 @@ pytest tests
 ```
 there should be 9 passing tests
 
-
-
+## running the example code
