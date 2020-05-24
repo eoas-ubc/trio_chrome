@@ -23,3 +23,6 @@ pytest tests
 there should be 9 passing tests
 
 ## running the example code
+
+1. run the examples in https://github.com/HyperionGray/trio-chrome-devtools-protocol/tree/master/examples
+
