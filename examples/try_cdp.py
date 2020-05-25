@@ -156,7 +156,7 @@ async def headless_chrome(receive_channel, chrome_args, options):
         #
         for item in saveit:
             if item == "terminate":
-                print("received terminate")
+                logger.info("received terminate")
                 process.terminate()
 
 
@@ -184,7 +184,7 @@ async def get_addr(url, send_channel):
     response = None
     while response is None:
         await trio.sleep(0.5)
-        print(f"sleeping {url}")
+        logger.info(f"sleeping {url}")
         response = await asks.get(url)
     out = json.loads(response.content.decode())
     async with send_channel:
@@ -217,7 +217,7 @@ async def make_request(targetlist, send_channel, receive_channel):
     for targeturl, pdfpath in targetlist:
         await save_pdf(browser_url, targeturl, pdfpath)
     async with send_channel:
-        print("sending terminate message")
+        logger.info("sending terminate message")
         await send_channel.send("terminate")
 
 
@@ -254,13 +254,13 @@ async def main(headless, get_addr, make_request):
             # (r"https://www.amazon.com", "amazon.png"),
         ]
         nursery.start_soon(make_request, targetlist, send_channel_1, receive_channel)
-    print(f"through main")
+    logger.info(f"through main")
 
 
 if __name__ == "__main__":
     asks.init("trio")
     the_port = get_free_port()
-    print(f"{the_port}")
+    print(f"using free port {the_port}")
     the_remote = f"--remote-debugging-port={the_port}"
     CHROME_PATH = str(chromium_executable())
     options = dict(
@@ -274,10 +274,10 @@ if __name__ == "__main__":
         r"about:blank",
     ]
     the_command = " ".join(chrome_args)
-    print(the_command)
-    print(chrome_args)
+    logger.info(f"command sent to chrome:\n{the_command}\n\n")
+    logger.info(f"command args: \n{chrome_args}\n\n")
     url = f"http://localhost:{the_port}"
-    print(f"first try: {url}")
+    logger.info(f"first try: {url}")
     headless_ft = ft.partial(headless_chrome, chrome_args=chrome_args, options=options)
     trio.run(
         main,
