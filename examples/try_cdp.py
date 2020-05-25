@@ -74,7 +74,7 @@ async def save_pdf(browserurl, targeturl, pdfpath):
             )
             body_html = await session.execute(dom.get_outer_html(title_node_id))
 
-            logger.info(body_html)
+            logger.debug(body_html)
 
             logger.info("Saving a pdf")
             # TODO: make sure that javascript finishes rendering
