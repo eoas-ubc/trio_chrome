@@ -21,6 +21,7 @@ from cdp import page
 from cdp import target
 from trio_cdp import open_cdp
 from pyppeteer.chromium_downloader import chromium_executable
+import context
 
 log_level = os.environ.get("LOG_LEVEL", "info").upper()
 logging.basicConfig(level=getattr(logging, log_level))
@@ -235,13 +236,14 @@ async def main(headless, get_addr, make_request):
         send_channel_1, receive_channel_1 = trio.open_memory_channel(0)
         nursery.start_soon(headless, receive_channel_1)
         nursery.start_soon(get_addr, url, send_channel)
+        testhtml_dir = context.testhtml_dir.resolve()
         targetlist = [
             (
-                r"file:///Users/phil/repos/paged_trio/testhtml/test_message.html",
+                fr"file://{str(testhtml_dir)}/test_message.html",
                 "test_message.pdf",
             ),
             (
-                r"file:///Users/phil/repos/paged_trio/testhtml/day5_quiz_students.html",
+                fr"file://{str(testhtml_dir)}/day5_quiz_students.html",
                 "day_5_students.pdf",
             ),
             # (r"https://google.com", "google.png"),
