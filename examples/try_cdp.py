@@ -1,7 +1,6 @@
 """
 examples for trio_cdp
-
-read_page -- visit a page and get the title
+save_pdf -- visit a page and print the pdf
 
 """
 import functools as ft
