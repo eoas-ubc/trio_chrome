@@ -26,3 +26,4 @@ there should be 9 passing tests
 
 1. run the examples in https://github.com/HyperionGray/trio-chrome-devtools-protocol/tree/master/examples
 
+2. run 
