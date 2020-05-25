@@ -3,8 +3,6 @@ examples for trio_cdp
 
 read_page -- visit a page and get the title
 
-take_screenshot -- take a screenshot of a page
-
 """
 import functools as ft
 import gc
@@ -33,7 +31,7 @@ logging.getLogger("trio-websocket").setLevel(logging.WARNING)
 
 async def save_pdf(browserurl, targeturl, pdfpath):
     """
-    take a screenshot of a webpage
+    make a pdf from a webpage
     originally https://github.com/HyperionGray/trio-chrome-devtools-protocol/blob/master/examples/screenshot.py
 
     Parameters
@@ -42,7 +40,7 @@ async def save_pdf(browserurl, targeturl, pdfpath):
         ws address for chrome developer protocol commands
 
     targeturl: str
-        url of page to screenshot
+        url of page to print to pdf
 
     pngfile: str
         filename for png file
@@ -79,8 +77,7 @@ async def save_pdf(browserurl, targeturl, pdfpath):
             logger.info(body_html)
 
             logger.info("Saving a pdf")
-            # TODO: capture_screenshot knows how to wait for javascript to finish
-            #  rendering, but print_do_pdf doesn't
+            # TODO: make sure that javascript finishes rendering
             # await session.execute(page.capture_screenshot(format="png"))
             pdf_data, _ = await session.execute(page.print_to_pdf())
 
@@ -117,7 +114,7 @@ async def read_page(browserurl, targeturl):
             dom.query_selector(root_node.node_id, "title")
         )
         html = await session.execute(dom.get_outer_html(title_node_id))
-        print(html)
+        #print(html)
 
 
 def get_free_port():
