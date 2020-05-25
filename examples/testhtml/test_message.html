@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MathJax Signals Test Page</title>
+        <!-- Copyright (c) 2010-2013 The MathJax Consortium -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!--
+             | This example shows how to use MathJax's signal mechanism to find out 
+             | about what MathJax is doing, and to hook into various events as they 
+             | occur.
+        -->
+
+        <script type="text/x-mathjax-config">
+
+         //
+         //  Configure MathJax
+         //
+         MathJax.Hub.Config({
+             extensions: ["tex2jax.js","TeX/noUndefined.js"],
+             jax: ["input/TeX","output/HTML-CSS"],
+             tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]},
+             TeX: {extensions: ["AMSmath.js","AMSsymbols.js"]}
+         });
+         //
+         //  Display messages when these files are loaded
+         //  (Note the difference between extensions and TeX.extensions,
+         //   and the difference between when noUndefind is loaded compared
+         //   to when it signals that it is ready)
+         //
+         MathJax.Hub.Register.LoadHook("[MathJax]/extensions/TeX/noUndefined.js",
+                                       function () {MathJax.Hub.Startup.signal.Post("*** noUndefined Loaded ***")});
+         MathJax.Hub.Register.LoadHook("[MathJax]/extensions/TeX/AMSmath.js",
+                                       function () {MathJax.Hub.Startup.signal.Post("*** AMSmath Loaded ***")});
+
+         MathJax.Hub.Queue(function () {Message("*** MathJax is done ***")});
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+
+
+    </head>
+    <body>
+
+        <p>
+            When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+            $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+        </p>
+
+
+        <!-- <div style="visibility:hidden"> -->
+        <div id="AllMessages" style="visibility:visible">
+            <!-- mathjax messages here -->
+        </div>
+
+        <script>
+         (function () {
+             var all = document.getElementById("AllMessages");
+             //
+             //  A function to display messages in the "AllMessages" area.
+             //  We make it global so it can be used in the startup code above.
+             //
+             window.Message = function (message) {
+                 MathJax.HTML.addText(all,message);
+                 MathJax.HTML.addElement(all,"br");
+             };
+
+             MathJax.Hub.Startup.signal.Interest(function (message) {Message("Startup: "+message)});
+             MathJax.Hub.signal.Interest(function (message) {Message("Hub: "+message)});
+         })();
+        </script>
+
+    </body>
+</html>
