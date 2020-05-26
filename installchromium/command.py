@@ -5,7 +5,7 @@
 
 import logging
 
-from PNAME.chromium_downloader import check_chromium, download_chromium
+from installchromium.chromium_downloader import check_chromium, download_chromium
 
 
 def install() -> None:

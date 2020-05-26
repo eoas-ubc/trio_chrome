@@ -14,20 +14,20 @@ from zipfile import ZipFile
 import urllib3
 from tqdm import tqdm
 
-from PNAME import __chromium_revision__, __PNAME_home__
+from installchromium import __chromium_revision__, __installchromium_home__
 
 logger = logging.getLogger(__name__)
 
-DOWNLOADS_FOLDER = Path(__PNAME_home__) / 'local-chromium'
+DOWNLOADS_FOLDER = Path(__installchromium_home__) / 'local-chromium'
 DEFAULT_DOWNLOAD_HOST = 'https://storage.googleapis.com'
 DOWNLOAD_HOST = os.environ.get(
-    'PNAME_DOWNLOAD_HOST', DEFAULT_DOWNLOAD_HOST)
+    'INSTALL_CHROMIUM_DOWNLOAD_HOST', DEFAULT_DOWNLOAD_HOST)
 BASE_URL = f'{DOWNLOAD_HOST}/chromium-browser-snapshots'
 
 REVISION = os.environ.get(
-    'PNAME_CHROMIUM_REVISION', __chromium_revision__)
+    'INSTALL_CHROMIUM_CHROMIUM_REVISION', __chromium_revision__)
 
-NO_PROGRESS_BAR = os.environ.get('PNAME_NO_PROGRESS_BAR', '')
+NO_PROGRESS_BAR = os.environ.get('INSTALL_CHROMIUM_NO_PROGRESS_BAR', '')
 if NO_PROGRESS_BAR.lower() in ('1', 'true'):
     NO_PROGRESS_BAR = True  # type: ignore
 

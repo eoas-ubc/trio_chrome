@@ -20,7 +20,7 @@ from cdp import emulation
 from cdp import page
 from cdp import target
 from trio_cdp import open_cdp
-from PNAME.chromium_downloader import chromium_executable
+from installchromium.chromium_downloader import chromium_executable
 import context
 
 log_level = os.environ.get("LOG_LEVEL", "info").upper()
