@@ -67,7 +67,7 @@ async def save_pdf(browserurl, targeturl, pdfpath):
             async with session.wait_for(page.LoadEventFired):
                 await session.execute(page.navigate(url=targeturl))
 
-            time.sleep(1)
+            time.sleep(3)
             root_node = await session.execute(dom.get_document())
             title_node_id = await session.execute(
                 dom.query_selector(root_node.node_id, "body")
@@ -245,6 +245,10 @@ async def main(headless, get_addr, make_request):
             (
                 fr"file://{str(testhtml_dir)}/day5_quiz_students.html",
                 "day_5_students.pdf",
+            ),
+            (
+                fr"file://{str(testhtml_dir)}/paged_sample_quiz/index.html",
+                "paged_sample_quiz.pdf",
             ),
             # (r"https://google.com", "google.png"),
             # (r"https://nytimes.com", "nytimes.png"),
