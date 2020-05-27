@@ -3,7 +3,7 @@
 ## installing chromium
 
 1. Borrow functions from https://github.com/miyakogi/pyppeteer to download chromium, return the
-   path to the chromium binary, check install.
+   path to the chromium binary, check install. 
 
 2. Install those so that we have a console_script that duplicates the
 behavior of `pyppeteer-install`

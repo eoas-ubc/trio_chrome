@@ -11,7 +11,7 @@ from chroman.run_cdp import run
 log_level = os.environ.get("LOG_LEVEL", "info").upper()
 logging.basicConfig(level=getattr(logging, log_level))
 logger = logging.getLogger("try_cdp")
-logging.getLogger("trio-websocket").setLevel(logging.WARNING)
+logging.getLogger("trio-websocket").setLevel(logging.INFO)
 
 if __name__ == "__main__":
     testhtml_dir = context.testhtml_dir.resolve()
