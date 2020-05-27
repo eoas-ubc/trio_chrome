@@ -12,7 +12,9 @@ setup(
     package_dir={'installchromium': 'installchromium'},
     entry_points={
         'console_scripts': [
-            'eoas_ubc-chromium-install = installchromium.command:install',
+            'install_chromium = installchromium.command:install_chromium',
+            'find_chromium = installchromium.command:find_chromium',
+            'clean_chromium = installchromium.command:clean_chromium',
         ],
     },
     python_requires='>=3.5',
