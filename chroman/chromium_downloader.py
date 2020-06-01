@@ -14,11 +14,11 @@ from zipfile import ZipFile
 import urllib3
 from tqdm import tqdm
 
-from installchromium import __chromium_revision__, __installchromium_home__
+from chroman import __chromium_revision__, __chroman_home__
 
 logger = logging.getLogger(__name__)
 
-DOWNLOADS_FOLDER = Path(__installchromium_home__) / 'local-chromium'
+DOWNLOADS_FOLDER = Path(__chroman_home__) / 'local-chromium'
 DEFAULT_DOWNLOAD_HOST = 'https://storage.googleapis.com'
 DOWNLOAD_HOST = os.environ.get(
     'INSTALL_CHROMIUM_DOWNLOAD_HOST', DEFAULT_DOWNLOAD_HOST)

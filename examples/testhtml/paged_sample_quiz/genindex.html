@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <!-- metadata -->
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width">
+        
+        <!-- scripts -->
+        <script src="_static/js/load_mathjax.js"></script>
+        <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+        <script src="_static/js/config.js"></script>
+        
+        <style>
+            /* print styles go here */
+            @page {
+                @top-left {
+                    content: "EOSC 340"
+                }
+                @top-center {
+                    content: "Quiz 2, February 27, 2020"
+                }
+                @top-right {
+                    content: "page: " counter(page) "/" counter(pages);
+                }
+                size: letter;
+                margin-top: 1in;
+                margin-bottom: 1in;
+                margin-left: 1in;
+                margin-right: 1in;
+            }
+   
+            @media print {
+   
+                body {
+                    font-size: 12px;
+                    margin: 0;
+                }
+                
+                brk {
+                    /* Section always get their own page */
+                    page-break-before: always;
+                }
+                
+                /* avoid splitting of ul elements */
+                ul {
+                    page-break-inside: avoid;
+                }
+                
+                /* Print at least 2 lines on the current page and 4 lines on the next page */
+                p {
+                    widows: 4;
+                    orphans: 2;
+                }
+            }
+   
+            @media (min-width: 48em) {
+                body {
+                    max-width: 48em;
+                }
+            }
+
+            /*********************************************
+* Print-specific CSS *
+*********************************************/
+@media print {
+  html {
+    font-family: sans-serif;
+  }
+
+  .page-break {
+    break-before: page;
+  }
+
+  div.cell_input {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+    line-height: 1.21429em;
+    padding-left: 10px;
+  }
+
+  div.cell_output {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+    line-height: 1.21429em;
+    padding-left: 10px;
+    margin-top: 10px;
+  }
+}
+
+           </style>
+    </head>
+</html>
+
+
+
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ 
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

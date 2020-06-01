@@ -6,15 +6,16 @@ from setuptools import setup
 import sys
 
 setup(
-    name='installchromium',
+    name='chroman',
     version='0.1',
-    packages=['installchromium'],
-    package_dir={'installchromium': 'installchromium'},
+    packages=['chroman'],
+    package_dir={'chroman': 'chroman'},
     entry_points={
         'console_scripts': [
-            'install_chromium = installchromium.command:install_chromium',
-            'find_chromium = installchromium.command:find_chromium',
-            'clean_chromium = installchromium.command:clean_chromium',
+            'install_chromium = chroman.command:install_chromium',
+            'find_chromium = chroman.command:find_chromium',
+            'clean_chromium = chroman.command:clean_chromium',
+            'print_page = chroman.command:print_page',
         ],
     },
     python_requires='>=3.5',
